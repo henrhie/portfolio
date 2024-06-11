@@ -11,7 +11,7 @@ import {
   XIcon,
 } from '@/components/SocialIcons'
 import portraitImage from '@/images/portrait.png'
-import { siteConfig } from '@/lib/stie-config'
+import { siteConfig } from '@/lib/site-config'
 
 function SocialLink({
   className,

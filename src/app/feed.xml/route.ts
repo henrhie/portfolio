@@ -1,4 +1,4 @@
-import { siteConfig } from '@/lib/stie-config'
+import { siteConfig } from '@/lib/site-config'
 import assert from 'assert'
 import * as cheerio from 'cheerio'
 import { Feed } from 'feed'

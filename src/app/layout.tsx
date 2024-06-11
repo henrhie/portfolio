@@ -4,7 +4,7 @@ import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
 
 import '@/styles/tailwind.css'
-import { siteConfig } from '@/lib/stie-config'
+import { siteConfig } from '@/lib/site-config'
 
 export const metadata: Metadata = {
   title: {
