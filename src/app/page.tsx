@@ -5,7 +5,12 @@ import clsx from 'clsx'
 import { Button, buttonStyles } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
-import { GitHubIcon, LinkedInIcon, XIcon } from '@/components/SocialIcons'
+import {
+  CalendarIcon,
+  GitHubIcon,
+  LinkedInIcon,
+  XIcon,
+} from '@/components/SocialIcons'
 import logoEventPenguin from '@/images/logos/event-penguin.svg'
 import logoMyTechHigh from '@/images/logos/my-tech-high.png'
 import logoDevmountain from '@/images/logos/devmountain.png'
@@ -316,10 +321,16 @@ export default async function Home() {
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             I’m Austin, a software engineer and entrepreneur based in Utah. I’m
-            the co-founder and CTO of Event Penguin, where we are building the
-            best event registration platform for small businesses.
+            the technical co-founder of Event Penguin, where we are making the
+            best registration tool for small to medium sized events. I’m also
+            currently looking for work so I&apos;d love to connect with you!
           </p>
           <div className="mt-6 flex gap-6">
+            <SocialLink
+              href={siteConfig.calUrl}
+              aria-label="Schedule a Meeting"
+              icon={CalendarIcon}
+            />
             <SocialLink
               href={siteConfig.social.twitter}
               aria-label="Follow on X"
