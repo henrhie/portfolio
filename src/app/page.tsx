@@ -323,7 +323,7 @@ export default async function Home() {
             I’m Austin, a software engineer and entrepreneur based in Utah. I’m
             the technical co-founder of Event Penguin, where we are making the
             best registration tool for small to medium sized events. I’m also
-            currently looking for work so I&apos;d love to connect with you!
+            currently looking for work so I’d love to connect with you!
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
