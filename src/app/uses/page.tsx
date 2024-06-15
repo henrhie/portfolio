@@ -50,8 +50,8 @@ export default function Uses() {
           <Tool title="16” MacBook Pro, M2 Max, `16GB RAM (2023)">
             I was using the the Zephyrus G-14 with WSL 2 prior to this and I
             find the MacBook Pro to be a much more powerful machine for
-            development. I’ve never heard the fans turn on a single time, even
-            when I code in large TypeScript projects.
+            development. I’ve never heard felt it stutter or lag, even when I
+            code in large TypeScript projects.
           </Tool>
           <Tool title={`Dell 27" QHD Monitor`}>
             Really nothing special. I find that 1440p is the minimum resolution
