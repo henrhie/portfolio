@@ -11,6 +11,7 @@ export const SiteSchema = z.object({
   link: z.object({
     home: z.string().url(),
     contact: z.string().url(),
+    thankYou: z.string().url(),
   }),
   social: z.object({
     twitter: z.string().url(),
@@ -33,6 +34,7 @@ export const siteConfig = {
   link: {
     home: '/',
     contact: '/contact',
+    thankYou: '/thank-you',
   },
   social: {
     twitter: 'https://x.com/recallgon',

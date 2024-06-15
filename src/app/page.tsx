@@ -17,6 +17,9 @@ import image5 from '@/images/photos/image-5.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import { siteConfig } from '@/lib/site-config'
+import { z } from 'zod'
+import { Resend } from 'resend'
+import { redirect } from 'next/navigation'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -107,9 +110,41 @@ function SocialLink({
 }
 
 function Newsletter() {
+  async function subscribe(formData: FormData) {
+    'use server'
+    const rawFormData = Object.fromEntries(formData.entries())
+
+    const schema = z.object({
+      email: z.string().email(),
+    })
+    const validatedFields = schema.safeParse(rawFormData)
+
+    if (!validatedFields.success) {
+      return {
+        errors: validatedFields.error.flatten().fieldErrors,
+      }
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY as string)
+
+    try {
+      await resend.contacts.create({
+        email: validatedFields.data.email,
+        unsubscribed: false,
+        audienceId: process.env.RESEND_AUDIENCE_ID as string,
+      })
+    } catch (error) {
+      return {
+        errors: [error],
+      }
+    }
+
+    redirect(siteConfig.link.thankYou)
+  }
+
   return (
     <form
-      action="/thank-you"
+      action={subscribe}
       className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
@@ -122,6 +157,7 @@ function Newsletter() {
       <div className="mt-6 flex">
         <input
           type="email"
+          name="email"
           placeholder="Email address"
           aria-label="Email address"
           required
