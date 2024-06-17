@@ -3,12 +3,15 @@ import { z } from 'zod'
 export const SiteSchema = z.object({
   title: z.string(),
   author: z.string(),
-  twitterHandle: z.string(),
   description: z.string(),
   email: z.string().email(),
   calLink: z.string(),
   calUrl: z.string().url(),
   resume: z.string().url(),
+  twitter: z.object({
+    handle: z.string(),
+    description: z.string(),
+  }),
   link: z.object({
     home: z.string().url(),
     contact: z.string().url(),
@@ -26,13 +29,15 @@ export type SiteConfig = z.infer<typeof SiteSchema>
 export const siteConfig = {
   title: 'Austin Karren',
   author: 'Austin Karren',
-  twitterHandle: '@recallgon',
-  description: `Unleash the Power of Automation to Maximize Productivity, Streamline
-  Operations, and Accelerate Growth`,
+  description: `I’m Austin, a software engineer and entrepreneur based in Vineyard Utah. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms.`,
   email: 'ausitn@karren.com',
   calLink: 'austin-karren',
   calUrl: 'https://cal.com/austin-karren',
   resume: '/files/resume.pdf',
+  twitter: {
+    handle: '@recallgon',
+    description: 'Software engineer, entrepreneur, and entrepreneur.',
+  },
   link: {
     home: '/',
     contact: '/contact',
