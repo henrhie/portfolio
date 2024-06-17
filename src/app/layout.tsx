@@ -18,6 +18,16 @@ export const metadata: Metadata = {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
     },
   },
+  openGraph: {
+    images: ['/og.png'],
+  },
+  twitter: {
+    title: `${siteConfig.title} - Software engineer, founder, and designer`,
+    description: siteConfig.description,
+    card: 'summary_large_image',
+    images: ['/twitter-og.png'],
+    creator: siteConfig.twitterHandle,
+  },
 }
 
 export default function RootLayout({

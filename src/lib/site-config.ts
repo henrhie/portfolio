@@ -3,6 +3,7 @@ import { z } from 'zod'
 export const SiteSchema = z.object({
   title: z.string(),
   author: z.string(),
+  twitterHandle: z.string(),
   description: z.string(),
   email: z.string().email(),
   calLink: z.string(),
@@ -25,6 +26,7 @@ export type SiteConfig = z.infer<typeof SiteSchema>
 export const siteConfig = {
   title: 'Austin Karren',
   author: 'Austin Karren',
+  twitterHandle: '@recallgon',
   description: `Unleash the Power of Automation to Maximize Productivity, Streamline
   Operations, and Accelerate Growth`,
   email: 'ausitn@karren.com',
