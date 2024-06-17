@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    images: ['/og.png'],
+    images: ['@/images/og.png'],
   },
   twitter: {
     title: `${siteConfig.title} - Software engineer, founder, and designer`,
     description: siteConfig.description,
     card: 'summary_large_image',
-    images: ['/twitter-og.png'],
+    images: ['@/images/twitter-og.png'],
     creator: siteConfig.twitterHandle,
   },
 }
