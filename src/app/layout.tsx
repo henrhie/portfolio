@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    images: ['/images/og.png'],
+    images: ['/og.png'],
     siteName: siteConfig.title,
     url: process.env.NEXT_PUBLIC_SITE_URL,
   },
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: `${siteConfig.title} - Software engineer, founder, and designer`,
     description: siteConfig.twitter.description,
     card: 'summary_large_image',
-    images: ['/images/twitter-og.png'],
+    images: ['/twitter-og.png'],
     creator: siteConfig.twitter.handle,
   },
 }
