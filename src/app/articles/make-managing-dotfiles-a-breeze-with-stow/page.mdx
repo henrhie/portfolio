@@ -1,0 +1,51 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { siteConfig } from '@/lib/site-config'
+
+export const article = {
+  author: siteConfig.author,
+  date: '2024-06-18',
+  title: 'Make managing dotfiles a breeze with Stow',
+  description:
+    'For the longest time, I managed my dotfiles with copy and paste. It was really inconvenient to recreate my dotfiles over and over again. That was until I discovered GNU Stow. With Stow, I keep my dotfiles in a remote Git repository, and it has changed the way I manage my dotfiles forever.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+For the longest time, I managed my dotfiles with copy and paste. It was really inconvenient to recreate my dotfiles over and over again. That was until I discovered GNU Stow. With Stow, I keep my dotfiles in a remote Git repository, and it has changed the way I manage my dotfiles forever. In this article I will explain how to configure GNU Stow.
+
+## Set up
+
+First we need to create a new directory to stow your dotfiles. This should be in your home directory and I'm going to name my directory `dotfiles`.
+
+```bash
+mkdir $HOME/dotfiles
+cd dotfiles
+```
+
+The fist thing I want to stow is my `~/.zshrc` file in the base of my home directory. We’ll need to copy the file to the `dotfiles` directory.
+
+```bash
+cp ~/.zshrc .
+```
+
+When stowing things in the `dotfiles` directory it’s important to keep the layout the same as in your home directory. Because the zshrc file is in the top level my home directory it needs to live in the top level of the dotfiles directory as well.
+
+Before get started with GNU Stow let’s make a copy of the `~/.zshrc` file that is in our home folder. That way if we make a mistake we can revert it later.
+
+```bash
+cd $HOME
+cp ~/.zshrc ~/.zshrc.copy
+```
+
+The rest is coming soon...
+
+## GNU Stow
+
+## Version control
+
+## Remote repository
