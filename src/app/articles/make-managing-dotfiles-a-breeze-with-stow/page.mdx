@@ -42,9 +42,57 @@ cd $HOME
 cp ~/.zshrc ~/.zshrc.copy
 ```
 
-The rest is coming soon...
-
 ## GNU Stow
+
+GNU Stow docs it descibes itself as a symlink farm manager. When you "stow" a file, it will create an symlink for all of the files and folders in inside the directory you pass to it. That means GNU Stow can help you to store all of your configuration files in one place.
+
+Below is an example of a child directory that I want to stow. Inside of the child directory there are two files named `a` and `b`, and a third file named `c` which is stowed in a nested directory. I'll add the tree command to help you visualize the child directory.
+
+```bash
+cd parent/child && tree
+.
+├── a
+├── b
+└── nested
+    └── c
+
+2 directories, 3 files
+```
+
+Now that you know what our example looks like we are going to stow it by passing the the child directory to it. This will tell stow to create a symlink farm inside of the parent directory.
+
+```bash
+stow ~/parent/child
+```
+
+If you are already in the child directory just run.
+
+```bash
+stow .
+```
+
+Now if we go to the parent directory and run the tree command you will see that GNU stow created symlinks for each of our files and directories.
+
+```bash
+cd parent && tree
+.
+├── a -> child/a
+├── b -> child/b
+├── child
+│   ├── a
+│   ├── b
+│   └── nested
+│       └── c
+└── nested -> child/nested
+
+4 directories, 5 files
+```
+
+Symlinking will create identical files and directories that are represented with the `->` syntax when running the tree command. Go ahead and give it a try. You will notice how if you make changes to any of the files in the child directory they will automatically be updated in the parent directory. Keep in mind that stow won't track new files or directories so you will need to rerun it if you make those kinds of changes.
+
+Now that we've played around with an example let's stow our .zshrc file.
+
+The rest is coming soon...
 
 ## Version control
 
