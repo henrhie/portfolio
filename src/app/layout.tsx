@@ -7,6 +7,7 @@ import '@/styles/tailwind.css'
 import { siteConfig } from '@/lib/site-config'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://austink.dev'),
   title: {
     template: `%s - ${siteConfig.title}`,
     default: `${siteConfig.title} - Software engineer, founder, and designer`,
