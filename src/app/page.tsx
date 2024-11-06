@@ -182,7 +182,7 @@ interface Role {
   title: string
   logo: ImageProps['src']
   start: string | { label: string; dateTime: string }
-  end: string | { label: string; dateTime: string }
+  end?: string | { label: string; dateTime: string }
 }
 
 function Role({ role }: { role: Role }) {
@@ -191,8 +191,8 @@ function Role({ role }: { role: Role }) {
   const startDate =
     typeof role.start === 'string' ? role.start : role.start.dateTime
 
-  const endLabel = typeof role.end === 'string' ? role.end : role.end.label
-  const endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
+  const endLabel = typeof role.end === 'string' ? role.end : role.end?.label
+  const endDate = typeof role.end === 'string' ? role.end : role.end?.dateTime
 
   return (
     <li className="flex gap-4">
@@ -213,9 +213,14 @@ function Role({ role }: { role: Role }) {
           className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
           aria-label={`${startLabel} until ${endLabel}`}
         >
-          <time dateTime={startDate}>{startLabel}</time>{' '}
-          <span aria-hidden="true">—</span>{' '}
-          <time dateTime={endDate}>{endLabel}</time>
+          <time dateTime={startDate}>{startLabel}</time>
+          {role.end ? (
+            <>
+              {' '}
+              <span aria-hidden="true">—</span>{' '}
+              <time dateTime={endDate}>{endLabel}</time>
+            </>
+          ) : null}
         </dd>
       </dl>
     </li>
@@ -239,21 +244,18 @@ function Resume() {
       title: 'JavaScript Developer',
       logo: logoMyTechHigh,
       start: '2020',
-      end: '2020',
     },
     {
       company: 'Dev Mountain',
       title: 'Certified Web Developer',
       logo: logoDevmountain,
       start: '2020',
-      end: '2020',
     },
     {
       company: 'Brigham Young University Idaho',
       title: 'Computer Science',
       logo: logoBYUI,
       start: '2019',
-      end: '2020',
     },
   ]
 
