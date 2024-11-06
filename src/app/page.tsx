@@ -14,6 +14,7 @@ import {
 import logoEventPenguin from '@/images/logos/event-penguin.svg'
 import logoMyTechHigh from '@/images/logos/my-tech-high.png'
 import logoDevmountain from '@/images/logos/devmountain.png'
+import logoBYUI from '@/images/logos/byui.png'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
@@ -237,15 +238,22 @@ function Resume() {
       company: 'My Tech High',
       title: 'JavaScript Developer',
       logo: logoMyTechHigh,
-      start: '2019',
+      start: '2020',
       end: '2020',
     },
     {
       company: 'Dev Mountain',
-      title: 'Web Developer',
+      title: 'Certified Web Developer',
       logo: logoDevmountain,
+      start: '2020',
+      end: '2020',
+    },
+    {
+      company: 'Brigham Young University Idaho',
+      title: 'Computer Science',
+      logo: logoBYUI,
       start: '2019',
-      end: '2019',
+      end: '2020',
     },
   ]
 
@@ -253,7 +261,7 @@ function Resume() {
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
-        <span className="ml-3">Work</span>
+        <span className="ml-3">Resume</span>
       </h2>
       <ol className="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
