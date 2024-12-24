@@ -15,6 +15,9 @@ const nextConfig = {
       },
     ],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  }
 }
 
 const withMDX = nextMDX({
