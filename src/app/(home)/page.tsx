@@ -31,13 +31,17 @@ function Article({ article }: { article: ArticleWithSlug }) {
   )
 }
 
+// zed is messing up typescript types
+// prettier-ignore
+type SocialLinkProps = React.ComponentPropsWithoutRef<typeof Link> & {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+}
+
 function SocialLink({
   icon: Icon,
   target = '_blank',
   ...props
-}: React.ComponentPropsWithoutRef<typeof Link> & {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-}) {
+}: SocialLinkProps) {
   return (
     <Link className="group -m-1 p-1" target={target} {...props}>
       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
