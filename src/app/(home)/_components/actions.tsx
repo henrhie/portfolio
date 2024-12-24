@@ -1,3 +1,5 @@
+'use server'
+
 import { siteConfig } from '@/lib/site-config'
 import { redirect } from 'next/navigation'
 import { Resend } from 'resend'
