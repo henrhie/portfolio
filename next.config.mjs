@@ -5,6 +5,16 @@ import remarkGfm from 'remark-gfm'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  i18n: {
+    locales: ['en-US'],
+    defaultLocale: 'en-US',
+    domains: [
+      {
+        domain: 'austink.dev',
+        defaultLocale: 'en-US',
+      },
+    ],
+  },
 }
 
 const withMDX = nextMDX({
