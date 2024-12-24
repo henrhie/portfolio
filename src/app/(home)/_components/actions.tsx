@@ -44,6 +44,7 @@ export async function subscribe(
       audienceId: process.env.RESEND_AUDIENCE_ID as string,
     })
   } catch (error) {
+    console.error(String(error))
     return {
       message: 'Failed to create contact',
       errors: null,
