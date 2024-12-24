@@ -5,7 +5,20 @@ import { redirect } from 'next/navigation'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
-export async function subscribe(formData: FormData) {
+export type SubscribeResponse = {
+  errors: { email?: string[] } | null
+  message: string | null
+  payload?: FormData
+}
+
+// Zed is being obnoxious with the formatting
+// prettier-ignore
+type FormPromise = Promise<SubscribeResponse>
+
+export async function subscribe(
+  state: SubscribeResponse,
+  formData: FormData,
+): FormPromise {
   'use server'
   const rawFormData = Object.fromEntries(formData.entries())
 
@@ -17,6 +30,8 @@ export async function subscribe(formData: FormData) {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
+      message: null,
+      payload: formData,
     }
   }
 
@@ -30,7 +45,9 @@ export async function subscribe(formData: FormData) {
     })
   } catch (error) {
     return {
-      errors: [error],
+      message: 'Failed to create contact',
+      errors: null,
+      payload: formData,
     }
   }
 
