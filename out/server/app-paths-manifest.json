@@ -5,10 +5,10 @@
   "/(home)/page": "app/(home)/page.js",
   "/articles/make-managing-dotfiles-a-breeze-with-stow/page": "app/articles/make-managing-dotfiles-a-breeze-with-stow/page.js",
   "/latest/make-managing-dotfiles-a-breeze-with-stow/page": "app/latest/make-managing-dotfiles-a-breeze-with-stow/page.js",
-  "/uses/page": "app/uses/page.js",
-  "/articles/page": "app/articles/page.js",
   "/latest/page": "app/latest/page.js",
+  "/articles/page": "app/articles/page.js",
+  "/projects/page": "app/projects/page.js",
   "/about/page": "app/about/page.js",
   "/thank-you/page": "app/thank-you/page.js",
-  "/projects/page": "app/projects/page.js"
+  "/uses/page": "app/uses/page.js"
 }
