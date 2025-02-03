@@ -21,7 +21,7 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  basePath: '/portfolio',
+  basePath: '/',
 }
 
 const withMDX = nextMDX({
