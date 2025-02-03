@@ -61,7 +61,7 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     </svg>
   )
 }
-export function Ampproject(props: React.ComponentPropsWithoutRef<'svg'>) {
+function Ampproject(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
