@@ -27,16 +27,16 @@ export const SiteSchema = z.object({
 export type SiteConfig = z.infer<typeof SiteSchema>
 
 export const siteConfig = {
-  title: 'Austin Karren',
-  author: 'Austin Karren',
-  description: `I’m Austin, a software engineer and entrepreneur based in Utah. I’m the technical co-founder of Event Penguin, where we are making the best registration tool for small to medium sized events. Looking for work.`,
-  email: 'ausitn@karren.com',
-  calLink: 'austin-karren',
-  calUrl: 'https://cal.com/austin-karren',
-  resume: '/files/resume.pdf',
+  title: 'Henry Ansah',
+  author: 'Henry Ansah',
+  description: `I am currently a PhD student at the University of New Orleans working under Professor Shreya Banerjee. My research interest lies in the intersection between Multimodal Machine Learning, Natural Language Processing, and Reasoning.`,
+  email: 'henryansah083@gmail.com',
+  calLink: 'henry-ansah',
+  calUrl: 'https://cal.com/henrhie',
+  resume: '/files/cv.pdf',
   twitter: {
-    handle: '@recallgon',
-    description: 'Software engineer, entrepreneur, and entrepreneur.',
+    handle: '@szntreble',
+    description: 'CS PhD Student at UNO',
   },
   link: {
     home: '/',
@@ -44,8 +44,8 @@ export const siteConfig = {
     thankYou: '/thank-you',
   },
   social: {
-    twitter: 'https://x.com/recallgon',
-    github: 'https://github.com/austin-karren',
-    linkedin: 'https://www.linkedin.com/in/austin-karren/',
+    twitter: 'https://x.com/szntreble',
+    github: 'https://github.com/henrhie',
+    linkedin: 'https://www.linkedin.com/in/henry-ansah-6a8b84167/',
   },
 } satisfies SiteConfig

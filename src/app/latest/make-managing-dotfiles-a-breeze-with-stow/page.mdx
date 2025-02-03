@@ -1,0 +1,223 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { siteConfig } from '@/lib/site-config'
+
+export const article = {
+  author: siteConfig.author,
+  date: '2024-06-18',
+  title: 'Make managing dotfiles a breeze with Stow',
+  description:
+    'For the longest time, I managed my dotfiles with copy and paste. It was really inconvenient to recreate my dotfiles over and over again. That was until I discovered GNU Stow. With Stow, I keep my dotfiles in a remote Git repository, and it has changed the way I manage my dotfiles forever.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+For the longest time, I managed my dotfiles with copy and paste. It was really inconvenient to recreate my dotfiles over and over again. That was until I discovered GNU Stow. With Stow, I keep my dotfiles in a remote Git repository, and it has changed the way I manage my dotfiles forever. In this article I will explain how to configure GNU Stow.
+
+## Set up
+
+First we need to create a new directory to stow your dotfiles. This should be in your home directory and I'm going to name my directory `dotfiles`.
+
+```bash
+mkdir $HOME/dotfiles
+cd dotfiles
+```
+
+The fist thing I want to stow is my `~/.zshrc` file in the base of my home directory. We’ll need to copy the file to the `dotfiles` directory.
+
+```bash
+cp ~/.zshrc .
+```
+
+When stowing things in the `dotfiles` directory it’s important to keep the layout the same as in your home directory. Because the zshrc file is in the top level my home directory it needs to live in the top level of the dotfiles directory as well.
+
+Before get started with GNU Stow let’s make a copy of the `~/.zshrc` file that is in our home folder. That way if we make a mistake we can revert it later.
+
+```bash
+cd $HOME
+
+cp ~/.zshrc ~/.zshrc.copy
+```
+
+## GNU Stow
+
+GNU Stow docs it descibes itself as a symlink farm manager. When you "stow" a file, it will create an symlink for all of the files and folders in inside the directory you pass to it. That means GNU Stow can help you to store all of your configuration files in one place.
+
+Below is an example of a child directory that I want to stow. Inside of the child directory there are two files named `a` and `b`, and a third file named `c` which is stowed in a nested directory. I'll add the tree command to help you visualize the child directory.
+
+```bash
+cd parent/child && tree
+.
+├── a
+├── b
+└── nested
+    └── c
+
+2 directories, 3 files
+```
+
+Now that you know what our example looks like we are going to stow it by passing the the child directory to it. This will tell stow to create a symlink farm inside of the parent directory.
+
+```bash
+stow ~/parent/child
+```
+
+If you are already in the child directory just run.
+
+```bash
+stow .
+```
+
+Now if we go to the parent directory and run the tree command you will see that GNU stow created symlinks for each of our files and directories.
+
+```bash
+cd parent && tree
+.
+├── a -> child/a
+├── b -> child/b
+├── child
+│   ├── a
+│   ├── b
+│   └── nested
+│       └── c
+└── nested -> child/nested
+
+4 directories, 5 files
+```
+
+Symlinking will create identical files and directories that are represented with the `->` syntax when running the tree command. Go ahead and give it a try. You will notice how if you make changes to any of the files in the child directory they will automatically be updated in the parent directory. Keep in mind that stow won't track new files or directories so you will need to rerun it if you make those kinds of changes.
+
+Now that we've played around with an example let's stow our .zshrc file.
+
+First start by installing stow using your package manager. I'm using brew so I'll install it using the `brew install stow` command.
+
+```bash
+brew update
+brew install stow
+```
+
+Once it's installed simply run the `stow .` command inside your dotfiles directory.
+
+```bash
+cd dotfiles
+stow .
+```
+
+Now let's check that it worked. Lets go back to your home directory and look at our .zshrc file.
+
+```bash
+cd $HOME
+ls -lah .zshrc
+```
+
+After running `ls -lah .zshrc` you will see that our .zshrc file is symlinked with the .zshrc file in the dotfiles directory. The arrow signifies that our file is symlinked.
+
+```txt
+... .zshrc -> dotfiles/.zshrc
+```
+
+If you open up a new terminal it now works as it did before. You are also free to make changes to your .zshrc file inside your dotfiles directory and it will instantly update the file on your home directory whenever you save any changes.
+
+## Version control
+
+Before we make any more changes to our dotfiles directory, lets make sure we enable version control. We'll do this by turining it into a git repository. This will allow us to rollback breaking changes, store it in a remote repository, and clone it onto any machine.
+
+To do this you will first need to make sure to have git installed on your system, which you can do with your package manager.
+
+```bash
+brew install git
+```
+
+Once installed run the `git init .` command inside of our dotfiles directory.
+
+```bash
+cd dotfiles
+git init .
+```
+
+Now that we have initilized our dotfiles repo let's add our .zshrc file using the `git add` command. Run `git add .` to add all files or simply run `git add .zshrc` to only add the .zshrc file to the git repository.
+
+```bash
+git add .zshrc
+```
+
+Store it using the `git commit` command.
+
+```bash
+git commit -m "Initial commit"
+```
+
+Now we have version control enabled! However, you may be concearned that our `.git` directory will now be symlinked the next time we run our stow command. Let's test that out to see if that's the case.
+
+```bash
+stow .
+ls ../.git
+```
+
+```txt
+ls: cannot access '../.git': No such file or directory
+```
+
+You will see that we have no git directory in our home folder. This is because stow ignores git directories by default. This is because stow has a list of files and directories that they ignore by default.
+
+```txt
+# Comments and blank lines are allowed.
+
+RCS
+.+,v
+
+CVS
+\.\#.+       # CVS conflict files / emacs lock files
+\.cvsignore
+
+\.svn
+_darcs
+\.hg
+
+\.git
+\.gitignore
+\.gitmodules
+
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+```
+
+If you want to override these you can provide your own list in a `.stow-local-ignore` file at the top level of your stow pagckage directory. Read more about ignore lists <a href="https://www.gnu.org/software/stow/manual/stow.html#Ignore-Lists" target="_blank">here.</a>
+
+## Remote repository
+
+It's a good idea to have a remote git repo to store any changes we wish to make to our dotfiles directory. This prevents us from losing our repository if something happens to our computer and allows us to download them from anywhere in the world.
+
+For this example I'm going to use GitHub. To get started sign in to GitHub and click the green 'New repo' button. Give your repository a name and a description. Choose if you want your repository to be private or public. If you have anything sensetive in your dotfiles directory then you will want to make it a private repo.
+
+Scroll to the bottom and click 'Create repository'. Once your repo is created, under 'Quick setup' copy the git url to you clipboard.
+
+Now back in the terminal we can use the follwing command and paste your remote repository url to make the existing git repository a remote one.
+
+```bash
+git remote add origin <your-repository-url>
+```
+
+Then use the `git push` command to push up your files to GitHub.
+
+```bash
+git push origin main
+```
+
+With that we now have a remote copy of our git files which we can pull down to any machine using the `git clone` command.
+
+```bash
+git clone <your-repository-url>
+```
+
+The last thing you can do is to add a README file to your dotfiles directory. That way when you move to a new machine you have some documentation on how to configure your dotfiles correctly.
+
+We now have a simple and elegant way to manage our dotfiles for any machine using GNU Stow. I hope that you try stow in your own configurations.

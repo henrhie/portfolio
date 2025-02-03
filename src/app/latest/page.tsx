@@ -43,16 +43,14 @@ export default async function ArticlesIndex() {
 
   return (
     <SimpleLayout
-      title="Depth of thought fuels the evolution of meaningful knowledge."
-      intro="In the symphony of intellectual exploration, each note of inquiry contributes to the harmonious development of a well-rounded and enlightened self."
+      title="Announcements"
+      intro="A spoken word flies; a written word remains."
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
         <div className="flex max-w-3xl flex-col space-y-16">
-          {articles
-            .filter((i) => i?.type !== 'non-article')
-            .map((article) => (
-              <Article key={article.title} article={article} />
-            ))}
+          {articles.map((article) => (
+            <Article key={article.title} article={article} />
+          ))}
         </div>
       </div>
     </SimpleLayout>

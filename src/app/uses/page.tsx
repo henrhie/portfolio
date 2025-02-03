@@ -47,7 +47,7 @@ export default function Uses() {
     >
       <div className="space-y-20">
         <ToolsSection title="Workstation">
-          <Tool title="16” MacBook Pro, M2 Max, `16GB RAM (2023)">
+          <Tool title="14” MacBook Pro, M2 Pro, `16GB RAM (2023)">
             I was using the the Zephyrus G-14 with WSL 2 prior to this and I
             find the MacBook Pro to be a much more powerful machine for
             development. I’ve never heard felt it stutter or lag, even when I

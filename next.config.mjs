@@ -10,7 +10,7 @@ const nextConfig = {
     defaultLocale: 'en-US',
     domains: [
       {
-        domain: 'austink.dev',
+        domain: 'henryansah.dev',
         defaultLocale: 'en-US',
       },
     ],

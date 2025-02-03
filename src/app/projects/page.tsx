@@ -8,18 +8,46 @@ import logoTritonTp from '@/images/logos/tritontp.svg'
 
 const projects = [
   {
-    name: 'EventPenguin',
+    name: 'Phi-2 Pytorch',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKcMdnLnVtxso40OlPI63YHziAlg_34FVbIA&s',
     description:
-      'A beautiful event registration platform for small businesses. The best b2b event registration platform for small to medium sized events.',
-    link: { href: 'https://eventpenguin.com', label: 'eventpenguin.com' },
-    logo: logoEventPenguin,
+      'Unofficial PyTorch implementation of the Phi-2 algorithm. Phi-2 is a Transformer with 2.7 billion parameters trained using the same data sources as Phi-1.5',
+    link: {
+      href: 'https://github.com/henrhie/Phi-2-Pytorch',
+      label: 'https://github.com/henrhie/Phi-2-Pytorch',
+    },
   },
   {
-    name: 'Triton Technology Partners',
+    name: 'pneumonia-pytorch-localization',
     description:
-      'Triton Technology Partners is a software engineering consulting firm for the modern technology industry.',
-    link: { href: 'https://tritontp.com', label: 'tritontp.com' },
-    logo: logoTritonTp,
+      'Not long ago, the machine learning group at Stanford University led by Adjunct Professor Andrew Ng released a paper on their computer vision algorithm which can detect and localize pneumonia from x-ray chest scans. Their algorithm outperformed the average practising radiologist at Stanford.',
+    link: {
+      href: 'https://github.com/henrhie/pneumonia-pytorch-localization',
+      label: 'https://github.com/henrhie/pneumonia-pytorch-localization',
+    },
+  },
+  {
+    name: 'Deepseek-Coder-LLAMA',
+    description:
+      'Deepseek Coder is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese.',
+    link: {
+      href: 'https://github.com/henrhie/Deepseek-Coder-LLAMA',
+      label: 'https://github.com/henrhie/Deepseek-Coder-LLAMA',
+    },
+  },
+]
+
+const os_contrib = [
+  {
+    name: 'MLX',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKcMdnLnVtxso40OlPI63YHziAlg_34FVbIA&s',
+    description:
+      'MLX is an array framework for machine learning on Apple silicon. Implemented the sigmoid neural network module.',
+    link: {
+      href: 'https://github.com/henrhie/mlx/commit/68bf1d786765c168b929c04b7f26ce47573f0c1f',
+      label:
+        'https://github.com/henrhie/mlx/commit/68bf1d786765c168b929c04b7f26ce47573f0c1f',
+    },
   },
 ]
 
@@ -33,6 +61,22 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     </svg>
   )
 }
+export function Ampproject(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="1em"
+      height="1em"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        d="M15.96.66L13.62 9.9h2.16c.6 0 .84.48.48 1.08L8.58 23.52a12.4 12.4 0 0 0 3.418.48H12c6.628-.005 11.998-5.379 11.998-12.008c0-5.209-3.317-9.644-7.955-11.306L15.959.66zm-5.58 13.38H8.22c-.6 0-.84-.48-.48-1.08L15.42.48A12.4 12.4 0 0 0 12.002 0H12C5.372.005.002 5.379.002 12.008c0 5.209 3.317 9.644 7.955 11.306l.084.026z"
+      ></path>
+    </svg>
+  )
+}
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -41,37 +85,55 @@ export const metadata: Metadata = {
 
 export default function Projects() {
   return (
-    <SimpleLayout
-      title="My creative footprint on the internet."
-      intro="I’ve worked on tons of little projects but these are the ones that I’m most proud of. Some of them are open-source, so if you see something that piques your interest, check out the code!"
-    >
-      <ul
-        role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {projects.map((project) => (
-          <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image
-                src={project.logo}
-                alt=""
-                className="h-8 w-8"
-                unoptimized
-              />
-            </div>
-            <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link href={project.link.href} target="_blank">
-                {project.name}
-              </Card.Link>
-            </h2>
-            <Card.Description>{project.description}</Card.Description>
-            <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-cyan-500 dark:text-zinc-200">
-              <LinkIcon className="h-6 w-6 flex-none" />
-              <span className="ml-2">{project.link.label}</span>
-            </p>
-          </Card>
-        ))}
-      </ul>
-    </SimpleLayout>
+    <>
+      <SimpleLayout title="Personal Projects." intro="">
+        <ul
+          role="list"
+          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {projects.map((project) => (
+            <Card as="li" key={project.name}>
+              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                <Ampproject />
+              </div>
+              <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+                <Card.Link href={project.link.href} target="_blank">
+                  {project.name}
+                </Card.Link>
+              </h2>
+              <Card.Description>{project.description}</Card.Description>
+              <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-cyan-500 dark:text-zinc-200">
+                <LinkIcon className="h-6 w-6 flex-none" />
+                <span className="ml-2">Project Link</span>
+              </p>
+            </Card>
+          ))}
+        </ul>
+      </SimpleLayout>
+      <SimpleLayout title="Open Source Contributions" intro="">
+        <ul
+          role="list"
+          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {os_contrib.map((project) => (
+            <Card as="li" key={project.name}>
+              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                <Ampproject />
+              </div>
+              <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+                <Card.Link href={project.link.href} target="_blank">
+                  {project.name}
+                </Card.Link>
+              </h2>
+              <Card.Description>{project.description}</Card.Description>
+              <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-cyan-500 dark:text-zinc-200">
+                <LinkIcon className="h-6 w-6 flex-none" />
+                <span className="ml-2">Project Link</span>
+              </p>
+            </Card>
+          ))}
+        </ul>
+      </SimpleLayout>
+    </>
   )
 }

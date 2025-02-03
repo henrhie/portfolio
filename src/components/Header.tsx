@@ -16,7 +16,7 @@ import {
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import avatarImage from '@/images/avatar.png'
+// import avatarImage from '@/images/avatar.png'
 
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -138,11 +138,11 @@ function MobileNavigation(
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/">Home</MobileNavItem>
-                <MobileNavItem href="/about">About</MobileNavItem>
-                <MobileNavItem href="/articles">Articles</MobileNavItem>
+                {/* <MobileNavItem href="/about">About</MobileNavItem> */}
+                <MobileNavItem href="/articles">Blogs</MobileNavItem>
                 <MobileNavItem href="/projects">Projects</MobileNavItem>
                 {/* <MobileNavItem href="/speaking">Speaking</MobileNavItem> */}
-                <MobileNavItem href="/uses">Uses</MobileNavItem>
+                <MobileNavItem href="/latest">Latest</MobileNavItem>
               </ul>
             </nav>
           </PopoverPanel>
@@ -166,7 +166,7 @@ function NavItem({
       <Link
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition',
+          'relative block px-4 py-2 transition',
           isActive
             ? 'text-cyan-500 dark:text-cyan-400'
             : 'hover:text-cyan-500 dark:hover:text-cyan-400',
@@ -174,7 +174,7 @@ function NavItem({
       >
         {children}
         {isActive && (
-          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-cyan-500/0 via-cyan-500/40 to-cyan-500/0 dark:from-cyan-400/0 dark:via-cyan-400/40 dark:to-cyan-400/0" />
+          <span className="absolute inset-x-1 -bottom-px h-[1.5px] bg-gradient-to-r from-cyan-500/0 via-cyan-500/40 to-cyan-500/0 dark:from-cyan-400/0 dark:via-cyan-400/40 dark:to-cyan-400/0" />
         )}
       </Link>
     </li>
@@ -186,11 +186,11 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
         <NavItem href="/">Home</NavItem>
-        <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Articles</NavItem>
+        {/* <NavItem href="/about">About</NavItem> */}
+        <NavItem href="/articles">Blogs</NavItem>
         <NavItem href="/projects">Projects</NavItem>
         {/* <NavItem href="/speaking">Speaking</NavItem> */}
-        <NavItem href="/uses">Uses</NavItem>
+        <NavItem href="/latest">Latest</NavItem>
       </ul>
     </nav>
   )
@@ -254,15 +254,17 @@ function Avatar({
       className={clsx(className, 'pointer-events-auto')}
       {...props}
     >
-      <Image
-        src={avatarImage}
+      <img
+        src={
+          'https://media.licdn.com/dms/image/v2/C4D03AQE4TtXMsiIsuA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1632568131247?e=1742428800&v=beta&t=p6DEmWgFlWZZhvevmyOJDrMeMPiWHupHDIutGUCVJLo'
+        }
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
           'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
           large ? 'h-16 w-16' : 'h-9 w-9',
         )}
-        priority
+        // priority
       />
     </Link>
   )

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import clsx from 'clsx'
 
-function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+export function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
@@ -18,6 +18,7 @@ export function Card<T extends React.ElementType = 'div'>({
   as,
   className,
   children,
+  link,
 }: Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'className'> & {
   as?: T
   className?: string
@@ -25,11 +26,12 @@ export function Card<T extends React.ElementType = 'div'>({
   const Component = as ?? 'div'
 
   return (
-    <Component
+    <a
+      href={link}
       className={clsx(className, 'group relative flex flex-col items-start')}
     >
       {children}
-    </Component>
+    </a>
   )
 }
 
@@ -60,7 +62,13 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
 
   return (
     <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-      {href ? <Card.Link href={href}>{children}</Card.Link> : children}
+      {href ? (
+        <Card.Link target="_blank" href={href}>
+          {children}
+        </Card.Link>
+      ) : (
+        children
+      )}
     </Component>
   )
 }
@@ -71,21 +79,28 @@ Card.Description = function CardDescription({
   children: React.ReactNode
 }) {
   return (
-    <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+    <p className="relative z-10 mt-2 line-clamp-3 max-h-[calc(1.5em*4)] overflow-hidden text-ellipsis text-sm leading-6 text-zinc-600 dark:text-zinc-400">
       {children}
     </p>
   )
 }
 
-Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
+Card.Cta = function CardCta({
+  link,
+  children,
+}: {
+  link: string
+  children: React.ReactNode
+}) {
   return (
-    <div
+    <a
+      href={link}
       aria-hidden="true"
       className="relative z-10 mt-4 flex items-center text-sm font-medium text-cyan-500"
     >
       {children}
       <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
-    </div>
+    </a>
   )
 }
 
