@@ -20,6 +20,7 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  basePath: '/spotlight',
 }
 
 const withMDX = nextMDX({
