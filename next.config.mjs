@@ -4,17 +4,18 @@ import remarkGfm from 'remark-gfm'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: 'out',
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-  i18n: {
-    locales: ['en-US'],
-    defaultLocale: 'en-US',
-    domains: [
-      {
-        domain: 'henryansah.dev',
-        defaultLocale: 'en-US',
-      },
-    ],
-  },
+  // i18n: {
+  //   locales: ['en-US'],
+  //   defaultLocale: 'en-US',
+  //   domains: [
+  //     {
+  //       domain: 'henryansah.dev',
+  //       defaultLocale: 'en-US',
+  //     },
+  //   ],
+  // },
   eslint: {
     // Warning: This allows production builds to successfully complete even if
     // your project has ESLint errors.
