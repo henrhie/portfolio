@@ -43,7 +43,7 @@ export default async function ArticlesIndex() {
 
   return (
     <SimpleLayout
-      title="Depth of thought fuels the evolution of meaningful knowledge."
+      title="Blogs"
       intro="In the symphony of intellectual exploration, each note of inquiry contributes to the harmonious development of a well-rounded and enlightened self."
     >
       <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
