@@ -42,17 +42,7 @@ export function getAllArticles() {
       linkText: 'More Info',
       type: 'non-article',
     },
-    {
-      title: 'SAC 2025 Submission Reviewer',
-      date: '2024-11-15',
-      description:
-        'I reviewed 2 submissions for the 2025 ACM Symposium on Applied Computing (SAC) Knowledge and Natural Language Processing track.',
-      slug: 'the-power-of-design',
-      author: 'Henry Ansah',
-      link: 'https://knlp-sac.github.io/2025/',
-      linkText: 'More Info',
-      type: 'non-article',
-    },
+
     {
       title: 'SAC 2025 Submission Reviewer',
       date: '2024-11-15',
