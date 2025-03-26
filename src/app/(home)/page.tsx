@@ -82,6 +82,15 @@ export default function Home() {
               href="https://www.uno.edu/profile/faculty/shreya_banerjee"
             >
               Dr. Shreya Banerjee
+            </a>{' '}
+            at the{' '}
+            <a
+              aria-hidden="true"
+              target="_blank"
+              className="cursor:pointer text-cyan-400"
+              href="https://haim-lab.github.io/site/main.html"
+            >
+              Humans, Hybrid AI, and Machines (HAIM) Lab
             </a>
             . My research interest lies in the intersection between Multimodal
             Machine Learning, Natural Language Processing, and Reasoning. My

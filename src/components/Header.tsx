@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import AvatarImg from '../images/avatar.jpeg'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
@@ -254,10 +255,8 @@ function Avatar({
       className={clsx(className, 'pointer-events-auto')}
       {...props}
     >
-      <img
-        src={
-          'https://media.licdn.com/dms/image/v2/C4D03AQE4TtXMsiIsuA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1632568131247?e=1742428800&v=beta&t=p6DEmWgFlWZZhvevmyOJDrMeMPiWHupHDIutGUCVJLo'
-        }
+      <Image
+        src={AvatarImg}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
